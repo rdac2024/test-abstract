@@ -1,0 +1,54 @@
+@use "sass:math";
+
+$goldColor: linear-gradient(90deg, #F4DFB2 0%, #DCB37B 100%);
+
+@function mvw($x) {
+  @return calc(math.div($x, 375) * 100vw);
+}
+
+@mixin blur($x) {
+  backdrop-filter: blur(#{$x});
+  -webkit-backdrop-filter: blur(#{$x});
+}
+
+@mixin fillText ($backgrounds...) {
+  background: $backgrounds;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+@mixin goldFill () {
+  fill: $goldColor;
+}
+
+@mixin goldBg () {
+  background: $goldColor !important;
+}
+
+@mixin goldText () {
+  @include fillText($goldColor);
+}
+
+@mixin goldTextByBg ($bg) {
+  @include fillText($bg);
+}
+
+@mixin goldBorderGhost () {
+  position: relative;
+  border: mvw(1) solid #F4DFB2;
+}
+
+@mixin hideScrollbar() {
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}

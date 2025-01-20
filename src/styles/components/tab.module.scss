@@ -1,0 +1,56 @@
+@import '@/styles/utils';
+
+.tabContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabNav {
+  font-size: mvw(14);
+  line-height: mvw(20);
+  height: mvw(36);
+  color: rgba(white, 0.4);
+  display: flex;
+  justify-content: center;
+  gap: mvw(48);
+  text-align: center;
+
+  span {
+    position: relative;
+    height: mvw(35);
+
+    &.active {
+      font-weight: 500;
+      color: white;
+
+      &::after {
+        content: '';
+        width: mvw(12);
+        height: mvw(2);
+        border-radius: mvw(12);
+        position: absolute;
+        top: mvw(24);
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+      }
+    }
+  }
+}
+
+.tabContent {
+  flex: 1;
+  overflow: hidden;
+}
+
+.tabContentItem {
+  display: none;
+  width: 100%;
+  height: 100%;
+
+  &.active {
+    display: block;
+  }
+}
